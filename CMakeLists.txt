@@ -1,4 +1,11 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.15)
+
+# Set the compilers based upon the PETSc package
+find_package(PkgConfig REQUIRED)
+pkg_get_variable(PETSC_C_COMPILER PETSc ccompiler)
+set(CMAKE_C_COMPILER ${PETSC_C_COMPILER})
+pkg_get_variable(PETSC_CXX_COMPILER PETSc cxxcompiler)
+set(CMAKE_CXX_COMPILER ${PETSC_CXX_COMPILER})
 
 # FetContent will allow downloading of other libraries
 include(FetchContent)
